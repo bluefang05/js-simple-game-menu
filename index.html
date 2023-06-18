@@ -45,8 +45,7 @@
 
       const menu = new Menu(menuData);
       menu.createMenu();
-      document.body.appendChild(menu.menuElement);
-
+      
       const showMenuBtn = document.getElementById('show-menu-btn');
       showMenuBtn.addEventListener('click', () => {
         menu.toggle();

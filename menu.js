@@ -47,6 +47,8 @@ class Menu {
       this.menuElement.classList.add('menu', 'menu-container');
       this.menuElement.appendChild(menuList);
       this.menuElement.appendChild(closeButton);
+      document.body.appendChild(menu.menuElement);
+
     }
   
     toggle() {
