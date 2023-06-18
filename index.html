@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Example</title>
+    <link rel="stylesheet" href="menu.css">
+  </head>
+  <body>
+    <button id="show-menu-btn">Show Menu</button>
+    <script src="menu.js"></script>
+    <script>
+      const menuData = [
+        {
+          label: 'Home',
+          onClick: () => {
+            console.log('Clicked on Home');
+          }
+        },
+        {
+          label: 'About',
+          onClick: () => {
+            console.log('Clicked on About');
+          },
+          submenu: [
+            {
+              label: 'Company',
+              onClick: () => {
+                console.log('Clicked on Company');
+              }
+            },
+            {
+              label: 'Team',
+              onClick: () => {
+                console.log('Clicked on Team');
+              }
+            }
+          ]
+        },
+        {
+          label: 'Contact',
+          onClick: () => {
+            console.log('Clicked on Contact');
+          }
+        }
+      ];
+
+      const menu = new Menu(menuData);
+      menu.createMenu();
+      document.body.appendChild(menu.menuElement);
+
+      const showMenuBtn = document.getElementById('show-menu-btn');
+      showMenuBtn.addEventListener('click', () => {
+        menu.toggle();
+      });
+    </script>
+  </body>
+</html>
