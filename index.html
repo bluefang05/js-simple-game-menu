@@ -1,55 +1,112 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Menu Example</title>
-    <link rel="stylesheet" href="menu.css">
-  </head>
-  <body>
-    <button id="show-menu-btn">Show Menu</button>
-    <script src="menu.js"></script>
-    <script>
-      const menuData = [
-        {
-          label: 'Home',
-          onClick: () => {
-            console.log('Clicked on Home');
-          }
-        },
-        {
-          label: 'About',
-          onClick: () => {
-            console.log('Clicked on About');
-          },
-          submenu: [
-            {
-              label: 'Company',
-              onClick: () => {
-                console.log('Clicked on Company');
-              }
-            },
-            {
-              label: 'Team',
-              onClick: () => {
-                console.log('Clicked on Team');
-              }
-            }
-          ]
-        },
-        {
-          label: 'Contact',
-          onClick: () => {
-            console.log('Clicked on Contact');
-          }
+<head>
+  <title>Game Menu</title>
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <button id="show-menu-btn"></button>
+  <script src="menu.js"></script>
+  <script>
+    const menuData = [
+      {
+        label: 'Play',
+        onClick: () => {
+          console.log('Clicked on Play');
         }
-      ];
-
-      const menu = new Menu(menuData);
-      menu.createMenu();
-      
-      const showMenuBtn = document.getElementById('show-menu-btn');
-      showMenuBtn.addEventListener('click', () => {
-        menu.toggle();
-      });
-    </script>
-  </body>
+      },
+      {
+        label: 'Levels',
+        submenu: [
+          {
+            label: 'Easy',
+            onClick: () => {
+              console.log('Clicked on Easy');
+            }
+          },
+          {
+            label: 'Medium',
+            onClick: () => {
+              console.log('Clicked on Medium');
+            }
+          },
+          {
+            label: 'Hard',
+            onClick: () => {
+              console.log('Clicked on Hard');
+            }
+          }
+        ]
+      },
+      {
+        label: 'Options',
+        submenu: [
+          {
+            label: 'Sound',
+            submenu: [
+              {
+                label: 'On',
+                onClick: () => {
+                  console.log('Clicked on Sound On');
+                }
+              },
+              {
+                label: 'Off',
+                onClick: () => {
+                  console.log('Clicked on Sound Off');
+                }
+              }
+            ]
+          },
+          {
+            label: 'Graphics',
+            submenu: [
+              {
+                label: 'Low',
+                onClick: () => {
+                  console.log('Clicked on Graphics Low');
+                }
+              },
+              {
+                label: 'Medium',
+                onClick: () => {
+                  console.log('Clicked on Graphics Medium');
+                }
+              },
+              {
+                label: 'High',
+                onClick: () => {
+                  console.log('Clicked on Graphics High');
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Quit',
+        onClick: () => {
+          console.log('Clicked on Quit');
+        }
+      }
+    ];
+  
+    const menuConfig = {
+      menuData,
+      title: 'Game Menu',
+      subtitle: 'Select an option below:',
+      buttonNames: { close: 'Exit', show: 'Open Menu' }
+    };
+  
+    const menu = new Menu(menuConfig);
+    menu.createMenu();
+  
+    const showMenuBtn = document.getElementById('show-menu-btn');
+    showMenuBtn.textContent = menu.buttonNames.show;
+    showMenuBtn.addEventListener('click', () => {
+      menu.toggle();
+    });
+  </script>
+  
+</body>
 </html>
